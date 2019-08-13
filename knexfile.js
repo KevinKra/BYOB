@@ -6,6 +6,9 @@ module.exports = {
     connection: "postgres://localhost/kevins_library",
     migrations: {
       directory: "./migrations"
+    },
+    seeds: {
+      directory: "./seeds"
     }
   },
 
@@ -14,6 +17,9 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     migrations: {
       directory: "./migrations"
+    },
+    seeds: {
+      directory: "./seeds"
     }
   }
 };

@@ -12,6 +12,10 @@
 - Don't have structured mechanisms for linking data between tables.
 - `MongoDB` is an example of a non-relational SQL-less database.
 
+#### What is a non-relational database suitable for?
+
+- A project with rapid growth would be more suitable for a non-relational database simply due to the flexibility of the design.
+
 ### Relational Databases
 
 - Store data in tables with rows and columns.
@@ -75,6 +79,10 @@
 - A SQL query builder designed to be flexible and "fun to use".
 - What Knex really is is Javascript instead of raw SQL.
 
+#### What are Migrations
+
+- Migrations server essentially as version control for databases. They are single, timestamped files that each represent a change to your database schema.
+
 ### What is pg?
 
 - `node-postgress`, it is a non-blocking PostgreSQL client for Node.js.
@@ -105,7 +113,6 @@
 - `psql <library_name>` connects to a specific library.
 - `\dt` (data table) shows your data table / "list of relations".
 - ex: `\d book` (data) shows the data table of your book.
-- `knex seed:make 00_books` Creates a seed. Runs seeds sequentially in order, so it needs to be ordered in the event that you have data that is dependent on other data.
 - `select * from book` shows your seed data.
 
 #### Knex
@@ -113,6 +120,7 @@
 - `knex init` Creates a knex config file / Initializes a Knex environment.
 - `knex migrate:make create_book_table` Setup migrations and run them. This file is how we setup up schema / organize our data in the book table.
 - `knex migrate: latest` running this migration creates the table in the database.
+- `knex seed:make 00_books` Creates a seed. Runs seeds sequentially in order, so it needs to be ordered in the event that you have data that is dependent on other data.
 - `knex seed:run` Run the seed data to insert it into the table.
 
 > Knex database setup
