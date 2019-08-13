@@ -26,10 +26,10 @@
 
 #### Terminology
 
-`SQL` - Structured Querying Language.
-`Schema` - A schema is the definition of your data structure. It provides a blueprint for the tables in the database and the relationships between them. Within each table, you must define the types of data that can be stored.
-`Primary Key` = A key in a relational database that is unique for each record/..
-`Foreign Key` = A field in one table that uniquely identifies a row of another table. Foreign keys are used to structure a relational database. They identify any atomic piece of data within a table. Other tables may refer to that foreign key, so as to create a link between their data and the piece pointed to by the foreign key.
+- `SQL` - Structured Querying Language.
+- `Schema` - A schema is the definition of your data structure. It provides a blueprint for the tables in the database and the relationships between them. Within each table, you must define the types of data that can be stored.
+- `Primary Key` = A key in a relational database that is unique for each record/..
+- `Foreign Key` = A field in one table that uniquely identifies a row of another table. Foreign keys are used to structure a relational database. They identify any atomic piece of data within a table. Other tables may refer to that foreign key, so as to create a link between their data and the piece pointed to by the foreign key.
 
 #### Questions
 
