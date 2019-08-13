@@ -2,7 +2,7 @@
 
 ## What is a Database?
 
-- A database is a collection of data stored in an organized way.
+- A database is a collection of data that can be stored, manipulated, and retrieved.
 - 2 types of databases: Relational, Non-Relational.
 
 ### Non-Relational Databases
@@ -200,7 +200,7 @@ module.exports = connection;
 
 > Express route handling
 
-```
+```node
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
@@ -241,3 +241,13 @@ app.listen(PORT, console.log(`Listening on port ${PORT}...`));
 - [Knex Connection File](https://gist.github.com/kimschles/808...)
 - [Knex Cheat Sheet](https://devhints.io/knex)
 - [Dan Levy's Express Guide](https://github.com/justsml/guides/tre...)
+
+# PostgreSQL
+
+(Notes are from this freeCodeCamp video.)[https://www.youtube.com/watch?v=qw--VYLpxG4]
+
+- PostgreSQL is the most popular open source database currently. Easy and robust, with great tools.
+
+# KnexJS
+
+#### Knexfile.js
