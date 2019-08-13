@@ -3,11 +3,17 @@
 module.exports = {
   development: {
     client: "pg",
-    connection: "postgres://localhost/kevins_library"
+    connection: "postgres://localhost/kevins_library",
+    migrations: {
+      directory: "./migrations"
+    }
   },
 
   production: {
     client: "pg",
-    connection: process.env.DATABASE_URL
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: "./migrations"
+    }
   }
 };

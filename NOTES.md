@@ -73,6 +73,7 @@
 ### What is Knex?
 
 - A SQL query builder designed to be flexible and "fun to use".
+- What Knex really is is Javascript instead of raw SQL.
 
 ### What is pg?
 
@@ -116,7 +117,7 @@
 
 > Knex database setup
 
-```
+```node
 // knexfile.js
 module.exports = {
   // to connect to a local database (dev env)
@@ -135,7 +136,7 @@ module.exports = {
 
 > migration schema example
 
-```
+```node
 // Creates a schema for the "book" table
 exports.up = function(knex) {
   return knex.schema.createTable("book", table => {
@@ -150,12 +151,11 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists("book");
 };
-
 ```
 
 > Seeding example
 
-```
+```node
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex("book")
@@ -187,7 +187,7 @@ exports.seed = function(knex) {
 
 > File connecting database to server
 
-```
+```node
 // connection.js
 const environment = process.env.NODE_ENV || "development";
 const config = require("./knexfile");
@@ -251,3 +251,5 @@ app.listen(PORT, console.log(`Listening on port ${PORT}...`));
 # KnexJS
 
 #### Knexfile.js
+
+- A configuration file for Knex to determine the connection, migrations, seeds, etc for different dev environments.
