@@ -6,8 +6,8 @@ app.use(express.json());
 
 app.use(morgan(process.env.NODE_ENV !== "production" ? "dev" : "combined"));
 
-app.get("/api/v1/books", (req, res) => {
-  dbConnection("book")
+app.get("/api/v1/pokemon", (req, res) => {
+  dbConnection("pokemon")
     .select("*")
     .then(books => res.status(200).send(books))
     .catch(err =>
@@ -15,8 +15,8 @@ app.get("/api/v1/books", (req, res) => {
     );
 });
 
-app.get("/api/v1/books/:id", (req, res) => {
-  dbConnection("book")
+app.get("/api/v1/pokemon/:id", (req, res) => {
+  dbConnection("pokemon")
     .select("*")
     .limit(1)
     .where({ id: req.params.id })

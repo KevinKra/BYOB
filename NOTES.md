@@ -37,9 +37,10 @@
 
 #### Questions
 
-- What are two or more differences between relational and non-relational databases?
+- What are two or more differences between **relational** and non-relational databases?
 - What is a Schema?
 - Give an example of a `one-to-many` and `many-to-many` relationship.
+- what is a `join table`?
 
 # Project Work-through
 
