@@ -12,6 +12,10 @@
 - Don't have structured mechanisms for linking data between tables.
 - `MongoDB` is an example of a non-relational SQL-less database.
 
+#### What is a non-relational database suitable for?
+
+- A project with rapid growth would be more suitable for a non-relational database simply due to the flexibility of the design.
+
 ### Relational Databases
 
 - Store data in tables with rows and columns.
@@ -33,9 +37,10 @@
 
 #### Questions
 
-- What are two or more differences between relational and non-relational databases?
+- What are two or more differences between **relational** and non-relational databases?
 - What is a Schema?
 - Give an example of a `one-to-many` and `many-to-many` relationship.
+- what is a `join table`?
 
 # Project Work-through
 
@@ -73,6 +78,11 @@
 ### What is Knex?
 
 - A SQL query builder designed to be flexible and "fun to use".
+- What Knex really is is Javascript instead of raw SQL.
+
+#### What are Migrations
+
+- Migrations server essentially as version control for databases. They are single, timestamped files that each represent a change to your database schema.
 
 ### What is pg?
 
@@ -104,19 +114,20 @@
 - `psql <library_name>` connects to a specific library.
 - `\dt` (data table) shows your data table / "list of relations".
 - ex: `\d book` (data) shows the data table of your book.
-- `knex seed:make 00_books` Creates a seed. Runs seeds sequentially in order, so it needs to be ordered in the event that you have data that is dependent on other data.
 - `select * from book` shows your seed data.
+- `dropdb <library name>` drops the targeted library that you're no longer using.
 
 #### Knex
 
 - `knex init` Creates a knex config file / Initializes a Knex environment.
 - `knex migrate:make create_book_table` Setup migrations and run them. This file is how we setup up schema / organize our data in the book table.
 - `knex migrate: latest` running this migration creates the table in the database.
+- `knex seed:make 00_books` Creates a seed. Runs seeds sequentially in order, so it needs to be ordered in the event that you have data that is dependent on other data.
 - `knex seed:run` Run the seed data to insert it into the table.
 
 > Knex database setup
 
-```
+```node
 // knexfile.js
 module.exports = {
   // to connect to a local database (dev env)
@@ -135,7 +146,7 @@ module.exports = {
 
 > migration schema example
 
-```
+```node
 // Creates a schema for the "book" table
 exports.up = function(knex) {
   return knex.schema.createTable("book", table => {
@@ -150,12 +161,11 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists("book");
 };
-
 ```
 
 > Seeding example
 
-```
+```node
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex("book")
@@ -187,7 +197,7 @@ exports.seed = function(knex) {
 
 > File connecting database to server
 
-```
+```node
 // connection.js
 const environment = process.env.NODE_ENV || "development";
 const config = require("./knexfile");
@@ -244,6 +254,8 @@ app.listen(PORT, console.log(`Listening on port ${PORT}...`));
 
 # PostgreSQL
 
+> this section is still being worked on.
+
 (Notes are from this freeCodeCamp video.)[https://www.youtube.com/watch?v=qw--VYLpxG4]
 
 - PostgreSQL is the most popular open source database currently. Easy and robust, with great tools.
@@ -251,3 +263,5 @@ app.listen(PORT, console.log(`Listening on port ${PORT}...`));
 # KnexJS
 
 #### Knexfile.js
+
+- A configuration file for Knex to determine the connection, migrations, seeds, etc for different dev environments.

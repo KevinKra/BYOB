@@ -3,11 +3,26 @@
 module.exports = {
   development: {
     client: "pg",
-    connection: "postgres://localhost/kevins_library"
+    connection: "postgres://localhost/pokemon",
+    migrations: {
+      directory: "./db/migrations"
+    },
+    useNullAsDefault: true
   },
 
   production: {
-    client: "pg",
-    connection: process.env.DATABASE_URL
+    client: "db",
+    connection: {
+      database: "my_db",
+      user: "username",
+      password: "password"
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: "knex_migrations"
+    }
   }
 };

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Ash",
+    "pokemon": [25, 89, 143, 3, 6, 9]
+  },
+  {
+    "name": "Misty",
+    "pokemon": [54, 118, 61, 120, 130]
+  },
+  {
+    "name": "Brock",
+    "pokemon": [74, 95]
+  },
+  {
+    "name": "Gary",
+    "pokemon": [6]
+  },
+  {
+    "name": "Lt. Surge",
+    "pokemon": [100, 25, 26]
+  },
+  {
+    "name": "Nim",
+    "pokemon": [56, 91, 131]
+  },
+  {
+    "name": "Erika",
+    "pokemon": [75, 114, 45]
+  },
+  {
+    "name": "Koga",
+    "pokemon": [109, 109, 89, 110]
+  },
+  {
+    "name": "Janine",
+    "pokemon": [42, 110, 110, 49, 89]
+  },
+  {
+    "name": "Sabrina",
+    "pokemon": [64, 65, 49, 122]
+  },
+  {
+    "name": "Blaine",
+    "pokemon": [58, 59, 77, 78]
+  },
+  {
+    "name": "Giovanni",
+    "pokemon": [31, 34, 51, 111, 112]
+  },
+  {
+    "name": "Lorelei",
+    "pokemon": [87, 91, 80, 124, 131]
+  },
+  {
+    "name": "Bruno",
+    "pokemon": [95, 95, 106, 107, 68]
+  },
+  {
+    "name": "Agatha",
+    "pokemon": [93, 94, 94, 42, 24]
+  },
+  {
+    "name": "Lance",
+    "pokemon": [130, 142, 148, 148, 149]
+  },
+  {
+    "name": "Blue",
+    "pokemon": [18, 65, 112, 59, 103, 9]
+  },
+  {
+    "name": "Jessie",
+    "pokemon": [52, 24, 108, 110, 113]
+  },
+  {
+    "name": "James",
+    "pokemon": [52, 130, 71, 110, 82]
+  },
+  {
+    "name": "Pam",
+    "pokemon": [1, 4, 6, 7, 10]
+  },
+  {
+    "name": "Robbie",
+    "pokemon": [67, 67, 12, 49, 44]
+  },
+  {
+    "name": "Brittany",
+    "pokemon": [100, 142, 149, 150, 151]
+  },
+  {
+    "name": "Jeff",
+    "pokemon": [39, 11, 11, 89, 125]
+  },
+  {
+    "name": "Travis",
+    "pokemon": [133, 133, 15, 96, 99]
+  },
+  {
+    "name": "Khalid",
+    "pokemon": [57, 57, 19, 19, 19]
+  },
+  {
+    "name": "Louisa",
+    "pokemon": [58, 71, 71, 89, 82]
+  },
+  {
+    "name": "Leta",
+    "pokemon": [60, 60, 77, 140, 101]
+  },
+  {
+    "name": "Christie",
+    "pokemon": [86, 6, 21, 99, 99]
+  },
+  {
+    "name": "Will",
+    "pokemon": [68, 141, 48, 48, 34]
+  },
+  {
+    "name": "Raechel",
+    "pokemon": [91, 91, 9, 12, 59]
+  }
+]
