@@ -115,6 +115,7 @@
 - `\dt` (data table) shows your data table / "list of relations".
 - ex: `\d book` (data) shows the data table of your book.
 - `select * from book` shows your seed data.
+- `dropdb <library name>` drops the targeted library that you're no longer using.
 
 #### Knex
 
@@ -252,6 +253,8 @@ app.listen(PORT, console.log(`Listening on port ${PORT}...`));
 - [Dan Levy's Express Guide](https://github.com/justsml/guides/tre...)
 
 # PostgreSQL
+
+> this section is still being worked on.
 
 (Notes are from this freeCodeCamp video.)[https://www.youtube.com/watch?v=qw--VYLpxG4]
 
