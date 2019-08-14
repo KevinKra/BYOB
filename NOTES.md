@@ -35,14 +35,27 @@
 - `Primary Key` = A key in a relational database that is unique for each record/..
 - `Foreign Key` = A field in one table that uniquely identifies a row of another table. Foreign keys are used to structure a relational database. They identify any atomic piece of data within a table. Other tables may refer to that foreign key, so as to create a link between their data and the piece pointed to by the foreign key.
 
-#### Questions
+#### Interview Questions
 
-- What are two or more differences between **relational** and non-relational databases?
-- What is a Schema?
-- Give an example of a `one-to-many` and `many-to-many` relationship.
-- what is a `join table`?
+1. Describe a `relational` database.
+2. Describe a `non-relational` databases.
+3. What is a Schema, which database format requires a schema?
+4. Give an example of a `one-to-one`, `one-to-many`, and `many-to-many` relationship.
+5. what is a `join table`?
+6. What kind of things would you consider in deciding whether you use a relational or non-relational database?
+7. What are the 3 types of relationships in relational database design?
 
-# Project Work-through
+#### Interview Answers
+
+1. Relational databases have been around since the mid 70s and have undergone numerous tweaks over the decades. As a consequence, they are very refined and polished and provide a very secure and maintainable database that is appropriate for large scale projects. The draw back is because relational databases require a lot of upfront planning and mapping they can be tricker to build during rapid expansion. Easy to search and query, uses tables, rows, columns.
+2. Non-relational databases use JSON and the OOP paradigm, schema is optional. Can write lists and objects instead of only text.
+3. A blueprint or design to restrict the shape (types) of incoming data. Relational databases require a schema, Non-relation databases do not (optional, but its recommended).
+4. `One-to-one`: One User owns one account and the account has one owner. `One-to-many`: One user has multiple accounts, multiple accounts have one owner. `Many-to-many`: Users can have multiple accounts and those accounts can have multiple owners.
+5. A `join table` provides a streamlined table displaying the relations between multiple different tables. Used in `many-to-many` relationships.
+6. The growth of the application and the expectations regarding user interaction, is it a lot of reading or reading and writing?
+7. `one-to-one`, `one-to-many`, and `many-to-many`.
+
+# Project 1 Work-through
 
 > Below are a series of videos to a very useful tutorial regarding setting up an application using Node, Express, Knex, and PostgreSQL.
 
@@ -80,13 +93,20 @@
 - A SQL query builder designed to be flexible and "fun to use".
 - What Knex really is is Javascript instead of raw SQL.
 
+### Knex exports.up / exports.down?
+
+- the `exports.up` and `exports.down` represent the current or previous versions of our migrations. When you enter `knex migrate:latest` you will be running the "up" path. When you enter `knex migrate:rollback` you are rolling back and undoes whatever "up" did. For every `up` there must be an equal / opposite `down`.
+
 #### What are Migrations
 
-- Migrations server essentially as version control for databases. They are single, timestamped files that each represent a change to your database schema.
+- **DO NOT EDIT MIGRATIONS DIRECTLY, DO NOT DELETE THEM EITHER**
+  > They set up instructions on how your database is going to change.
+- Migrations serve essentially as version control for databases. They are single, timestamped files that each represent a change to your database overall schema.
+- Updates/modifications/corrections should be handled in new migrations.
 
 ### What is pg?
 
-- `node-postgress`, it is a non-blocking PostgreSQL client for Node.js.
+- `node-postgres`, it is a non-blocking PostgreSQL client for Node.js.
 
 ### Heroku
 
@@ -109,21 +129,28 @@
 
 #### PostgreSQL
 
-- `createdb <library_name>` Creates a psql database.
+- (in CLI) `createdb <library_name>` Creates a sql database.
+- (in SQL) `CREATE DATABASE <name>` Creates a sql database.
 - `psql --list` Lists all the libraries currently on your machine.
 - `psql <library_name>` connects to a specific library.
 - `\dt` (data table) shows your data table / "list of relations".
 - ex: `\d book` (data) shows the data table of your book.
 - `select * from book` shows your seed data.
 - `dropdb <library name>` drops the targeted library that you're no longer using.
+- `\c <database name>` connect to a specific database
 
 #### Knex
 
 - `knex init` Creates a knex config file / Initializes a Knex environment.
-- `knex migrate:make create_book_table` Setup migrations and run them. This file is how we setup up schema / organize our data in the book table.
-- `knex migrate: latest` running this migration creates the table in the database.
+- `knex migrate:make <title?>` Setup migrations and run them. This file is how we setup up schema / organize our data in the book table.
+- `knex migrate:latest` running this migration creates the table in the database.
+- `knex migrate:up` Runs next migration up that has not yet been run.
+- `knex migrate:down` Can go down multiple times to previous migrations.
+- `knex migrate:rollback` Only can go back to the previous migration, one step back only.
 - `knex seed:make 00_books` Creates a seed. Runs seeds sequentially in order, so it needs to be ordered in the event that you have data that is dependent on other data.
 - `knex seed:run` Run the seed data to insert it into the table.
+- `knex migrate:currentVersion` returns the timestamped version your working with.
+- are all tables included in the same migration
 
 > Knex database setup
 
@@ -164,6 +191,9 @@ exports.down = function(knex) {
 ```
 
 > Seeding example
+> Seeds represent default data. Sometimes you may want to populate your tables with fake data so you can work on other functionality.
+
+`knex seed:make <name>`
 
 ```node
 exports.seed = function(knex) {
@@ -252,16 +282,36 @@ app.listen(PORT, console.log(`Listening on port ${PORT}...`));
 - [Knex Cheat Sheet](https://devhints.io/knex)
 - [Dan Levy's Express Guide](https://github.com/justsml/guides/tre...)
 
-# PostgreSQL
+# Project 2 Workthrough (From class notes)
 
-> this section is still being worked on.
+[Turing Link](https://frontend.turing.io/lessons/module-4/knex-postgres.html)
 
-(Notes are from this freeCodeCamp video.)[https://www.youtube.com/watch?v=qw--VYLpxG4]
+```node
+exports.up = function(knex) {
+  return Promise.all([
+    knex.schema.createTable("papers", table => {
+      table.increments("id").primary();
+      table.string("title");
+      table.string("author");
+      // shorthand create a 'created_at' and 'updated_at' columns in your table
+      table.timestamps(true, true);
+    }),
+    knex.schema.createTable("footnotes", table => {
+      table.increments("id").primary();
+      table.string("note");
+      // the 'unsigned' method prevents the field from being a negative number
+      table.integer("paper_id").unsigned();
+      // creates a foreign key
+      table.foreign("paper_id").references("papers.id");
+      table.timestamps(true, true);
+    })
+  ]);
+};
 
-- PostgreSQL is the most popular open source database currently. Easy and robust, with great tools.
-
-# KnexJS
-
-#### Knexfile.js
-
-- A configuration file for Knex to determine the connection, migrations, seeds, etc for different dev environments.
+exports.down = function(knex) {
+  return Promise.all([
+    knex.schema.dropTable("footnotes"),
+    knex.schema.dropTAble("papers")
+  ]);
+};
+```
