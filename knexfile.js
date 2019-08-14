@@ -3,9 +3,12 @@
 module.exports = {
   development: {
     client: "pg",
-    connection: "postgres://localhost/pokemon",
+    connection: "postgres://localhost/knex_postgres",
     migrations: {
       directory: "./db/migrations"
+    },
+    seeds: {
+      directory: "./db/seeds"
     },
     useNullAsDefault: true
   },
