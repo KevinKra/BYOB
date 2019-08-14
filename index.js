@@ -6,24 +6,24 @@ app.use(express.json());
 
 app.use(morgan(process.env.NODE_ENV !== "production" ? "dev" : "combined"));
 
-app.get("/api/v1/pokemon", (req, res) => {
-  dbConnection("pokemon")
+app.get("/api/v1/papers", (req, res) => {
+  dbConnection("papers")
     .select("*")
-    .then(books => res.status(200).send(books))
+    .then(papers => res.status(200).send(papers))
     .catch(err =>
       res.status(500).send({ error: err.message, stack: err.stack })
     );
 });
 
 app.get("/api/v1/pokemon/:id", (req, res) => {
-  dbConnection("pokemon")
-    .select("*")
-    .limit(1)
-    .where({ id: req.params.id })
-    .then(book => res.status(200).json(book))
-    .catch(book =>
-      res.status(500).send({ error: err.message, stack: err.stack })
-    );
+  // dbConnection("pokemon")
+  //   .select("*")
+  //   .limit(1)
+  //   .where({ id: req.params.id })
+  //   .then(book => res.status(200).json(book))
+  //   .catch(book =>
+  //     res.status(500).send({ error: err.message, stack: err.stack })
+  //   );
 });
 
 const PORT = process.env.PORT || 3000;
