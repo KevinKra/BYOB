@@ -1,0 +1,22 @@
+[
+  {
+    "author": "Andrew Scott",
+    "title": "Film School",
+    "footnotes": ["one", "two", "three"]
+  },
+  {
+    "author": "Phillip Moore",
+    "title": "Outside in the West",
+    "footnotes": ["four", "five", "six"]
+  },
+  {
+    "author": "Samantha Hemming",
+    "title": "9 days",
+    "footnotes": ["seven", "eight", "nine"]
+  },
+  {
+    "author": "Greg Micheals",
+    "title": "BattleShip Row",
+    "footnotes": ["ten", "eleven", "twelve"]
+  }
+]
