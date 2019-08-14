@@ -99,14 +99,14 @@
 
 #### What are Migrations
 
-- **DO NOT EDIT MIGRATIONS DIRECTLY**
+- **DO NOT EDIT MIGRATIONS DIRECTLY, DO NOT DELETE THEM EITHER**
   > They set up instructions on how your database is going to change.
 - Migrations serve essentially as version control for databases. They are single, timestamped files that each represent a change to your database overall schema.
 - Updates/modifications/corrections should be handled in new migrations.
 
 ### What is pg?
 
-- `node-postgress`, it is a non-blocking PostgreSQL client for Node.js.
+- `node-postgres`, it is a non-blocking PostgreSQL client for Node.js.
 
 ### Heroku
 
@@ -129,19 +129,21 @@
 
 #### PostgreSQL
 
-- `createdb <library_name>` Creates a psql database.
+- (in CLI) `createdb <library_name>` Creates a sql database.
+- (in SQL) `CREATE DATABASE <name>` Creates a sql database.
 - `psql --list` Lists all the libraries currently on your machine.
 - `psql <library_name>` connects to a specific library.
 - `\dt` (data table) shows your data table / "list of relations".
 - ex: `\d book` (data) shows the data table of your book.
 - `select * from book` shows your seed data.
 - `dropdb <library name>` drops the targeted library that you're no longer using.
+- `\c <database name>` connect to a specific database
 
 #### Knex
 
 - `knex init` Creates a knex config file / Initializes a Knex environment.
 - `knex migrate:make <title?>` Setup migrations and run them. This file is how we setup up schema / organize our data in the book table.
-- `knex migrate: latest` running this migration creates the table in the database.
+- `knex migrate:latest` running this migration creates the table in the database.
 - `knex migrate:up` Runs next migration up that has not yet been run.
 - `knex migrate:down` Can go down multiple times to previous migrations.
 - `knex migrate:rollback` Only can go back to the previous migration, one step back only.
